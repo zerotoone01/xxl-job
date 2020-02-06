@@ -1,8 +1,13 @@
 package com.intellif.xxljob.deepeye.service.jobhandler;
 
+import com.xxl.job.core.biz.model.ReturnT;
+import com.xxl.job.core.handler.annotation.XxlJob;
+import com.xxl.job.core.log.XxlJobLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  *  主要是针对引擎的动态抓拍数据的删除
@@ -24,4 +29,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DelEngineDataJob {
     private static Logger logger = LoggerFactory.getLogger(DelEngineDataJob.class);
+
+    @XxlJob("delDciEngineHandler")
+    public ReturnT<String> delDciEngineHandler(String param) throws Exception {
+        XxlJobLogger.log("delDciEngineHandler start ...");
+
+        // 1.根据指定指定id删除数据
+        // 2.
+        for (int i = 0; i < 5; i++) {
+            XxlJobLogger.log("beat at:" + i);
+            TimeUnit.SECONDS.sleep(2);
+        }
+        return ReturnT.SUCCESS;
+    }
 }
